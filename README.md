@@ -12,5 +12,13 @@ You can download the latest version [here](https://github.com/astridlol/closer/r
 
 ### Configuration
 
-As of right now, there is not much configuration to be done. The only thing you can do is specify a process name to be closed when the keybind (Esc + D) is pressed.
-<br>The configuration is automatically generated into a file named `config.json` in the same directory as the executable.
+The only configuration able to be done is the processName, and whether to run in the background or not.
+
+Example:
+
+```json
+{
+  "processName": "firefox.exe",
+  "hidden": true
+}
+```
