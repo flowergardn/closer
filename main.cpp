@@ -14,7 +14,7 @@ int main() {
         std::cout << "Generating config file" << std::endl;
         // Create a JSON file within the executable directory
         std::ofstream o("config.json");
-        o << R"({"processName":"Firefox.exe"})";
+        o << R"({"processName":"Firefox.exe", "hidden": false})";
         o.close();
     } else {
         // Send a message to the console saying that the config file exists
@@ -22,13 +22,18 @@ int main() {
     }
     file.close();
 
-
     std::ifstream fJson("config.json");
     std::stringstream buffer;
     buffer << fJson.rdbuf();
     auto json = nlohmann::json::parse(buffer.str());
     // Get process name from the JSON file
     string processName = json["processName"];
+    bool hidden = json["hidden"];
+
+    if(hidden) {
+        // Hide the console
+        ShowWindow(GetConsoleWindow(), SW_HIDE);
+    }
 
 
     std::cout << "Application running. Press esc + d to close " + processName + " automatically." << std::endl;
