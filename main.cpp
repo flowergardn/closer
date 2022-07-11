@@ -31,25 +31,25 @@ int main() {
     string processName = json["processName"];
 
 
-    std::cout << "Application running. Press shift + d to close " + processName + " automatically." << std::endl;
+    std::cout << "Application running. Press esc + d to close " + processName + " automatically." << std::endl;
     bool pressedD = false;
-    bool pressedShift = false;
+    bool pressedEsc = false;
 
     while (true) {
         // Check if shift is currently pressed
-        if (GetAsyncKeyState(VK_SHIFT) & 0x8000) pressedShift = true;
-        else pressedShift = false;
+        if (GetAsyncKeyState(VK_ESCAPE) & 0x8000) pressedEsc = true;
+        else pressedEsc = false;
         // Check if b is currently pressed
         if (GetKeyState('D') & 0x8000) pressedD = true;
         else pressedD = false;
 
-        if (pressedD && pressedShift) {
+        if (pressedD && pressedEsc) {
             std::cout << "Killing application" << std::endl;
             string command = "taskkill /f /t /im " + processName;
             system(command.c_str());
             std::cout << "Successfully killed " + processName << std::endl;
             pressedD = false;
-            pressedShift = false;
+            pressedEsc = false;
         }
     }
 
