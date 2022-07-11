@@ -8,7 +8,7 @@ This is my first actual C++ project, I made it purely to solve a single problem 
 
 ## Download
 
-You can download the latest version [here](https://github.com/astridlol/closer/releases)
+You can download the latest version [here](https://github.com/astridlol/closer/releases/latest)
 
 ### Configuration
 
